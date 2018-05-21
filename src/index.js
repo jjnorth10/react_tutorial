@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Calculator from './Components/Temperature/Calculator';
+import UncontrolledForm from './Components/Form/UncontrolledForm';
 import registerServiceWorker from './registerServiceWorker';
+import index from "./js/index";
+import store from "./js/store/index";
 
 //ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<Calculator />, document.getElementById('root'));
+//ReactDOM.render(<Calculator />, document.getElementById('root'));
+//index.store.getState();
+ReactDOM.render(<UncontrolledForm />, document.getElementById('root'));
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+store.dispatch({type: "ADD_ARTICLE", payload: ["new","newer"]});
 
 /*class Clock extends React.Component {
   constructor(props) {
