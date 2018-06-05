@@ -24,6 +24,7 @@ describe('App component testing', function() {
   it('renders project list', function(){
     const wrapper = shallow(<App />);
     const projects = <Projects />;
+    expect(wrapper.contains(projects)).to.equal(true);
 
   });
 });
