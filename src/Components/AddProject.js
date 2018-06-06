@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import store from "../js/store/index";
 
 class AddProject extends Component {
 
@@ -9,6 +10,9 @@ class AddProject extends Component {
 
       }
     }
+    store.subscribe(() => {
+      console.log(store.getState());
+    });
   }
 
   static defaultProps = {
@@ -20,7 +24,8 @@ class AddProject extends Component {
 
 
     console.log(this.refs.title.value);
-    this.setState({
+    store.dispatch({type: "ADD_PROJECT", payload: [this.refs.title.value]});
+    /*this.setState({
       newProject: {
         title: this.refs.title.value,
         category: this.refs.category.value
@@ -28,7 +33,8 @@ class AddProject extends Component {
     },function(){
         console.log(this.state);
         this.props.addProject(this.state.newProject);
-    });
+    });*/
+
   }
 
   render() {
@@ -38,7 +44,7 @@ class AddProject extends Component {
           <option key={category} value={category}>{category}</option>
         )
     })
-   
+
     return (
       <div >
           <h3>Add Project</h3>
@@ -56,7 +62,7 @@ class AddProject extends Component {
               </div>
               <input type="submit"/>
           </form>
-       
+
       </div>
     );
   }

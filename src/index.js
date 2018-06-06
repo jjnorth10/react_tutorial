@@ -11,12 +11,13 @@ import store from "./js/store/index";
 //ReactDOM.render(<App />, document.getElementById('root'));
 //ReactDOM.render(<Calculator />, document.getElementById('root'));
 //index.store.getState();
-ReactDOM.render(<UncontrolledForm />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 store.subscribe(() => {
   console.log(store.getState());
 });
 
-store.dispatch({type: "ADD_ARTICLE", payload: ["new","newer"]});
+//store.dispatch({type: "ADD_PROJECT", payload: ["new","newer","newest","item1"]});
+store.dispatch({type: "REMOVE_PROJECT", payload: 1});
 
 
 /*class Clock extends React.Component {
